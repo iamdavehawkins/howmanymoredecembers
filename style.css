@@ -165,6 +165,19 @@ body {
 .winter-icon:nth-child(1) { left: 20%; top: 10px; }
 .winter-icon:nth-child(2) { right: 25%; top: 20px; }
 
+/* Bandcamp Embed */
+.bandcamp-embed {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.bandcamp-embed iframe {
+    max-width: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
 /* CTA Buttons */
 .cta-row {
     display: flex;
@@ -516,6 +529,15 @@ body {
     .winter-motifs {
         height: 30px;
         margin: 12px 0;
+    }
+    
+    .bandcamp-embed {
+        margin: 20px 0;
+    }
+    
+    .bandcamp-embed iframe {
+        width: 100% !important;
+        max-width: 350px;
     }
     
     .cta-row {
