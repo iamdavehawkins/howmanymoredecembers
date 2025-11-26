@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>How Many More Decembers - Dave Hawkins</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // Gentle snow drift effect - respects prefers-reduced-motion
+        document.addEventListener('mousemove', function(e) {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            
+            const driftElements = document.querySelectorAll('.drift');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            driftElements.forEach(element => {
+                const offsetX = (x - 0.5) * 6;
+                const offsetY = (y - 0.5) * 6;
+                element.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+            });
+        });
+
+        // Subtle floating animation
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                const floatingElements = document.querySelectorAll('.floating');
+                floatingElements.forEach(element => {
+                    const randomDuration = 8 + Math.random() * 4;
+                    const randomDelay = Math.random() * 4;
+                    element.style.animation = `float ${randomDuration}s ease-in-out ${randomDelay}s infinite alternate`;
+                });
+            }
+
+            // Initialize scroll reveal
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll();
+        });
+
+        function revealOnScroll() {
+            const elements = document.querySelectorAll('.reveal');
+            const windowHeight = window.innerHeight;
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 50) {
+                    element.classList.add('revealed');
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="texture-overlay"></div>
+    <div class="container">
+        <main>
+            <!-- Hero Section -->
+            <header class="hero-section">
+                <h1 class="title">HOW MANY MORE DECEMBERS</h1>
+                
+                <figure class="album-art-frame drift">
+                    <img src="How Many More Decembers - Album Cover.png" alt="How Many More Decembers cover art" class="album-art">
+                    <figcaption class="photo-credit">hastily shot in the backyard, 48 hours ago</figcaption>
+                </figure>
+                
+                <!-- Minimal winter motifs -->
+                <div class="winter-motifs">
+                    <span class="winter-icon floating">❄️</span>
+                    <span class="winter-icon floating">🌲</span>
+                </div>
+                
+                <!-- Primary CTA -->
+                <div class="cta-row">
+                    <a href="https://iamdavehawkins.bandcamp.com/track/how-many-more-decembers" class="cta-button primary" target="_blank" rel="noopener">
+                        <svg class="cta-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M0 18.75l7.437-13.5H24l-7.438 13.5H0z"/>
+                        </svg>
+                        Listen on Bandcamp
+                    </a>
+                </div>
+                
+                <p class="streaming-note">streaming platforms: on the way</p>
+            </header>
+            
+            <div class="section-divider"></div>
+
+            <!-- About Section -->
+            <section class="about-section reveal">
+                <div class="about-content">
+                    <p class="about-text">
+                        Recorded in 48 hours. Written during a moment of gratitude mixed with the ache of impermanence. 
+                        You'll hear cell phone interference, the water heater clicking on, some fret buzz. 
+                        Nothing's tuned up, nothing's quantized. Mixed and mastered at home, as best as I could.
+                    </p>
+                </div>
+            </section>
+            
+            <div class="section-divider"></div>
+            
+            <!-- From the Song Section -->
+            <section class="lyrics-section reveal">
+                <h2 class="section-label">from the song</h2>
+                
+                <blockquote class="lyric-excerpt">
+                    someone left a jacket on the back porch in the rain<br>
+                    i keep meaning to move it but it kinda looks like them<br>
+                    and when the breeze hits just right well i'm choking up again<br>
+                    <em>how many more decembers has it been</em>
+                </blockquote>
+                
+                <blockquote class="lyric-excerpt secondary">
+                    this year she picked a calendar with pictures of the coast<br>
+                    thought it'd be sentimental, like i need another dose<br>
+                    it doesn't even look like that, they ruined it in post<br>
+                    <em>how many more decembers will we know</em>
+                </blockquote>
+                
+                <!-- Minimal floating accents -->
+                <div class="floating-accents">
+                    <span class="accent-icon floating">❄️</span>
+                    <span class="accent-icon floating">🍂</span>
+                    <span class="accent-icon floating">🌲</span>
+                </div>
+            </section>
+            
+            <div class="section-divider"></div>
+
+            <!-- Email List Section -->
+            <section class="newsletter-section reveal">
+                <h2 class="newsletter-title">email list</h2>
+                <p class="newsletter-subtitle">new songs, shows, and occasional field notes</p>
+                
+                <form
+                  action="https://buttondown.com/api/emails/embed-subscribe/iamdavehawkins"
+                  method="post"
+                  target="popupwindow"
+                  onsubmit="window.open('https://newsletter.iamdavehawkins.com', 'popupwindow')"
+                  class="newsletter-form"
+                >
+                  <label for="bd-email" class="visually-hidden">Email address</label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="bd-email"
+                    placeholder="your@email.com"
+                    required
+                  />
+                  <input type="hidden" value="1" name="embed" />
+                  <button type="submit" class="newsletter-button">Subscribe</button>
+                </form>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <p>&copy; <script>document.write(new Date().getFullYear());</script> Dave Hawkins | <a href="https://links.iamdavehawkins.com">links.iamdavehawkins.com</a></p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,603 @@
+/* ============================================
+   FONTS
+   ============================================ */
+@font-face {
+    font-family: 'Compadre Extended';
+    src: url('https://cdn.iamdavehawkins.com/Compadre-Extended.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Degular Text';
+    src: url('https://cdn.iamdavehawkins.com/DegularText-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vulf Mono';
+    src: url('https://cdn.iamdavehawkins.com/Vulf_Mono-Light_Italic_web.woff2') format('woff2');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Coniferous';
+    src: url('https://cdn.iamdavehawkins.com/Coniferous-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ============================================
+   VARIABLES
+   ============================================ */
+:root {
+    /* Brand colors - winter palette emphasis */
+    --rust: #9B4A34;
+    --denim: #4F6A89;
+    --mustard: #D8A34A;
+    --paper: #F4F0E6;
+    --charcoal: #222222;
+    --winter-mist: rgba(79, 106, 137, 0.15);
+    
+    /* Typography */
+    --font-title: 'Compadre Extended', serif;
+    --font-body: 'Degular Text', sans-serif;
+    --font-meta: 'Vulf Mono', monospace;
+    --font-poetic: 'Coniferous', serif;
+}
+
+/* ============================================
+   RESET & BASE
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background: linear-gradient(to bottom, #1a1f28 0%, var(--charcoal) 100%);
+    color: var(--paper);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Paper texture overlay */
+.texture-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 50%, var(--winter-mist) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, var(--winter-mist) 0%, transparent 50%),
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.05"/></svg>');
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.8;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px 20px 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero-section {
+    text-align: center;
+    padding: 20px 0 40px;
+}
+
+.title {
+    font-family: var(--font-title);
+    font-size: clamp(2rem, 8vw, 3.5rem);
+    letter-spacing: 0.03em;
+    margin-bottom: 30px;
+    color: var(--paper);
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.album-art-frame {
+    max-width: 500px;
+    margin: 0 auto 20px;
+    position: relative;
+    background: var(--paper);
+    padding: 12px;
+    box-shadow: 
+        0 8px 24px rgba(0, 0, 0, 0.4),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    transform: rotate(-0.5deg);
+    transition: transform 0.3s ease;
+}
+
+.album-art-frame:hover {
+    transform: rotate(0deg) scale(1.02);
+}
+
+.album-art {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.photo-credit {
+    font-family: var(--font-meta);
+    font-size: 0.75rem;
+    color: var(--denim);
+    margin-top: 12px;
+    opacity: 0.8;
+}
+
+/* Winter motifs */
+.winter-motifs {
+    position: relative;
+    height: 40px;
+    margin: 20px 0;
+}
+
+.winter-icon {
+    position: absolute;
+    font-size: 1.5rem;
+    opacity: 0.3;
+    user-select: none;
+}
+
+.winter-icon:nth-child(1) { left: 20%; top: 10px; }
+.winter-icon:nth-child(2) { right: 25%; top: 20px; }
+
+/* CTA Buttons */
+.cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background: var(--denim);
+    color: var(--paper);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.cta-button.primary {
+    background: var(--rust);
+    font-size: 1.1rem;
+    padding: 16px 32px;
+}
+
+.cta-button:hover {
+    background: var(--mustard);
+    color: var(--charcoal);
+    border-color: var(--mustard);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(216, 163, 74, 0.3);
+}
+
+.cta-button:focus-visible {
+    outline: 3px solid var(--mustard);
+    outline-offset: 3px;
+}
+
+.cta-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.streaming-note {
+    font-family: var(--font-meta);
+    font-size: 0.85rem;
+    color: var(--denim);
+    margin-top: 12px;
+    opacity: 0.7;
+}
+
+/* ============================================
+   ABOUT SECTION
+   ============================================ */
+.about-section {
+    padding: 30px 0;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.about-content {
+    background: rgba(79, 106, 137, 0.08);
+    padding: 24px;
+    border-left: 3px solid var(--denim);
+    border-radius: 2px;
+}
+
+.about-text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 12px;
+    color: var(--paper);
+}
+
+.about-text:last-child {
+    margin-bottom: 0;
+}
+
+.about-text.signature {
+    font-family: var(--font-meta);
+    font-size: 0.95rem;
+    color: var(--mustard);
+    margin-top: 12px;
+}
+
+/* ============================================
+   SECTION DIVIDERS
+   ============================================ */
+.section-divider {
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent 0%,
+        var(--denim) 50%,
+        transparent 100%
+    );
+    margin: 40px 0;
+    opacity: 0.3;
+}
+
+/* ============================================
+   LYRICS SECTION
+   ============================================ */
+.lyrics-section {
+    padding: 30px 0;
+    position: relative;
+    text-align: center;
+}
+
+.section-label {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    text-transform: lowercase;
+    letter-spacing: 0.05em;
+    color: var(--denim);
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+.lyric-excerpt {
+    font-family: var(--font-body);
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    line-height: 1.75;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    padding: 24px;
+    color: var(--paper);
+    border-left: 2px solid var(--rust);
+    text-align: left;
+    background: rgba(155, 74, 52, 0.05);
+}
+
+.lyric-excerpt em {
+    font-style: italic;
+    color: var(--mustard);
+    font-weight: normal;
+}
+
+.lyric-excerpt.secondary {
+    border-left-color: var(--denim);
+    background: rgba(79, 106, 137, 0.05);
+    margin-top: 20px;
+}
+
+/* Floating accents */
+.floating-accents {
+    position: relative;
+    height: 60px;
+    margin-top: 20px;
+}
+
+.accent-icon {
+    position: absolute;
+    font-size: 1.3rem;
+    opacity: 0.2;
+    user-select: none;
+}
+
+.accent-icon:nth-child(1) { left: 15%; top: 10px; }
+.accent-icon:nth-child(2) { right: 20%; top: 30px; }
+.accent-icon:nth-child(3) { left: 50%; top: 5px; }
+
+/* ============================================
+   NEWSLETTER SECTION
+   ============================================ */
+.newsletter-section {
+    padding: 30px 0;
+    text-align: center;
+}
+
+.newsletter-title {
+    font-family: var(--font-body);
+    font-size: 1.3rem;
+    text-transform: lowercase;
+    letter-spacing: 0.05em;
+    color: var(--paper);
+    margin-bottom: 10px;
+    font-weight: normal;
+}
+
+.newsletter-subtitle {
+    font-family: var(--font-meta);
+    font-size: 0.9rem;
+    color: var(--denim);
+    margin-bottom: 20px;
+}
+
+.newsletter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.newsletter-form input[type="email"] {
+    flex: 1;
+    min-width: 200px;
+    padding: 14px 18px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    background: rgba(244, 240, 230, 0.1);
+    border: 2px solid var(--denim);
+    border-radius: 4px;
+    color: var(--paper);
+    transition: all 0.3s ease;
+}
+
+.newsletter-form input[type="email"]::placeholder {
+    color: rgba(244, 240, 230, 0.5);
+}
+
+.newsletter-form input[type="email"]:focus {
+    outline: none;
+    border-color: var(--mustard);
+    background: rgba(244, 240, 230, 0.15);
+    box-shadow: 0 0 0 3px rgba(216, 163, 74, 0.2);
+}
+
+.newsletter-button {
+    padding: 14px 32px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    background: var(--rust);
+    color: var(--paper);
+    border: 2px solid var(--rust);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.newsletter-button:hover {
+    background: var(--mustard);
+    border-color: var(--mustard);
+    color: var(--charcoal);
+    transform: translateY(-2px);
+}
+
+.newsletter-button:focus-visible {
+    outline: 3px solid var(--mustard);
+    outline-offset: 3px;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.site-footer {
+    text-align: center;
+    padding: 40px 20px 30px;
+    font-family: var(--font-meta);
+    font-size: 0.85rem;
+    color: var(--denim);
+    opacity: 0.7;
+}
+
+.site-footer a {
+    color: var(--denim);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.site-footer a:hover {
+    border-bottom-color: var(--mustard);
+    color: var(--mustard);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes float {
+    from {
+        transform: translate(0, 0px) rotate(0deg);
+    }
+    to {
+        transform: translate(0, -10px) rotate(3deg);
+    }
+}
+
+/* Scroll reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 16px 16px;
+    }
+    
+    .hero-section {
+        padding: 16px 0 24px;
+    }
+    
+    .title {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+    
+    .album-art-frame {
+        max-width: 100%;
+        margin-bottom: 12px;
+    }
+    
+    .winter-motifs {
+        height: 30px;
+        margin: 12px 0;
+    }
+    
+    .cta-row {
+        flex-direction: column;
+        align-items: stretch;
+        margin: 16px 0;
+    }
+    
+    .cta-button {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .about-section {
+        padding: 20px 0;
+    }
+    
+    .about-content {
+        padding: 18px;
+    }
+    
+    .about-text {
+        margin-bottom: 10px;
+        line-height: 1.65;
+    }
+    
+    .lyrics-section {
+        padding: 20px 0;
+    }
+    
+    .section-label {
+        margin-bottom: 16px;
+    }
+    
+    .lyric-excerpt {
+        font-size: 1.2rem;
+        padding: 18px;
+        margin-bottom: 20px;
+        line-height: 1.65;
+    }
+    
+    .lyric-excerpt.secondary {
+        margin-top: 16px;
+    }
+    
+    .floating-accents {
+        height: 40px;
+        margin-top: 16px;
+    }
+    
+    .newsletter-section {
+        padding: 20px 0;
+    }
+    
+    .newsletter-subtitle {
+        margin-bottom: 16px;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+    }
+    
+    .newsletter-form input[type="email"] {
+        min-width: 100%;
+    }
+    
+    .section-divider {
+        margin: 28px 0;
+    }
+    
+    .site-footer {
+        padding: 28px 16px 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.6rem;
+    }
+    
+    .winter-icon,
+    .accent-icon {
+        font-size: 1.2rem;
+    }
+}
