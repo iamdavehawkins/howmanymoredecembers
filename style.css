@@ -167,13 +167,12 @@ body {
 
 /* Bandcamp Embed */
 .bandcamp-embed {
-    display: flex;
-    justify-content: center;
-    margin: 30px 0;
+    max-width: 600px;
+    margin: 30px auto;
 }
 
 .bandcamp-embed iframe {
-    max-width: 100%;
+    width: 100%;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     border-radius: 4px;
 }
@@ -532,12 +531,7 @@ body {
     }
     
     .bandcamp-embed {
-        margin: 20px 0;
-    }
-    
-    .bandcamp-embed iframe {
-        width: 100% !important;
-        max-width: 350px;
+        margin: 20px auto;
     }
     
     .cta-row {
